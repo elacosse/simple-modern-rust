@@ -1,0 +1,28 @@
+name: Template
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install 1.92.0 --profile minimal --component clippy --component rustfmt
+      - run: cargo install typos-cli --version 1.38.1 --locked
+      - run: go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.7
+      - run: go install github.com/google/yamlfmt/cmd/yamlfmt@v0.16.0
+      - run: echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - run: make check
+      - run: make template-test
+  generated-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install 1.92.0 --profile minimal
+      - run: python bootstrap.py --name hello-world --owner example-owner --author 'Ada Lovelace' --email ada@example.org --description 'A greeting application'
+      - run: cargo build --locked
+      - run: cargo test --locked --all-features

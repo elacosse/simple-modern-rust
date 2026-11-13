@@ -1,0 +1,13 @@
+[package]
+name = "simple-modern-rust"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92"
+authors = ["Template Author <author@example.com>"]
+description = "A small Rust command-line application"
+license = "MIT"
+repository = "https://github.com/template-owner/simple-modern-rust"
+readme = "README.md"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
