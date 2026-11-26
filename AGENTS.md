@@ -26,6 +26,15 @@ Run these commands and resolve all errors before concluding any task:
    - **Verification:** Commands run and pass status.
    - **Human Review Focus:** Specific high-stakes logic, edge cases, or assumptions requiring human judgment.
 
+## Human Communication (ASD-STE100)
+Write all human-facing prose (plans, status updates, handoff summaries, and explanations) in **ASD-STE100 (Simplified Technical English)**:
+- **Sentence length:** Keep instructions to <= 20 words and descriptions to <= 25 words. Put one idea in each sentence.
+- **Active voice & simple verbs:** Use active voice and simple tenses (imperative for steps; simple present, past, or future for facts). Replace weak verb phrases with direct verbs (`check`, not `perform a check`).
+- **Noun clusters:** Limit noun clusters to <= 3 words.
+- **Consistent, plain words:** Use one word for one meaning. Avoid idioms, filler, and vague pronouns (`this`, `it`). Use plain terms (`use`, `start`, `stop`, `before`, `if`).
+- **Lists:** Use a vertical list for 3 or more items.
+- **Technical exemptions:** Code identifiers, file paths, CLI commands, and verbatim error/spec quotes are Technical Names and do not change.
+
 ## Project Layout & Template Notes
 - Read `README.md` and `development.md` before making changes. Keep the CLI small and test observable behavior.
 - See `agent-skills.md` for optional OpenSpec and agent skills; do not make Rust builds depend on them.
